@@ -45,6 +45,7 @@ class Layout extends React.Component {
             marginLeft: `auto`,
             marginRight: `auto`,
             maxWidth: rhythm(40),
+            height: "100vh",
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
@@ -57,7 +58,16 @@ class Layout extends React.Component {
           >
             {header}
           </header>
-          <main>{children}</main>
+          <main
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              height: "70vh",
+            }}
+          >
+            {children}
+          </main>
         </div>
         {/* <Footer>
           © {new Date().getFullYear()}, Built with
