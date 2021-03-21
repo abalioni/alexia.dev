@@ -11,46 +11,31 @@ class Layout extends React.Component {
     const blogPath = `${__PATH_PREFIX__}/blog/`
     let header
 
-    if (location.pathname === rootPath || location.pathname === blogPath) {
+    if (location.pathname === blogPath) {
       header = (
-        <h1
+        <Link
           style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
           }}
+          to={rootPath}
         >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
-          >
-            {title}
-          </Link>
-        </h1>
+          Home
+        </Link>
       )
     } else {
       header = (
-        <h3
+        <Link
           style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
           }}
+          to={blogPath}
         >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/blog/`}
-          >
-            {title}
-          </Link>
-        </h3>
+          Blog
+        </Link>
       )
     }
     return (
@@ -63,14 +48,22 @@ class Layout extends React.Component {
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
-          <header>{header}</header>
+          <header
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              width: "95%",
+            }}
+          >
+            {header}
+          </header>
           <main>{children}</main>
         </div>
-        <Footer>
+        {/* <Footer>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
+        </Footer> */}
       </Wrapper>
     )
   }
